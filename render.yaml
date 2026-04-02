@@ -1,0 +1,39 @@
+services:
+  # ── BACKEND ──────────────────────────────────────────
+  - type: web
+    name: medicompare-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false   # Set in Render dashboard
+      - key: JWT_SECRET
+        sync: false   # Set in Render dashboard
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: GEMINI_API_KEY
+        sync: false   # Set in Render dashboard
+      - key: FRONTEND_URL
+        sync: false   # Set to your Vercel/Render frontend URL
+
+  # ── FRONTEND (Static Site) ────────────────────────────
+  - type: web
+    name: medicompare-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://medicompare-api.onrender.com/api/*
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        value: https://medicompare-api.onrender.com

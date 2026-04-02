@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 210 40% 96%;
+    --border: 214 32% 91%;
+  }
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 217 33% 17%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 217 33% 17%;
+    --border: 215 28% 25%;
+  }
+  body {
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 font-sans antialiased;
+    background-image: radial-gradient(circle at 10% 10%, rgba(14, 165, 233, 0.08), transparent 30%),
+      radial-gradient(circle at 90% 0%, rgba(99, 102, 241, 0.08), transparent 35%);
+  }
+}
+
+.glass {
+  @apply bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border border-white/20 dark:border-slate-700/50;
+}
+
+.glass-card {
+  @apply glass rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-black/20;
+}
+
+.section-title {
+  @apply text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100;
+}
+
+.muted {
+  @apply text-slate-600 dark:text-slate-400;
+}
