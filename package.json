@@ -1,14 +1,12 @@
 {
-  "name": "medicompare",
+  "name": "medi-backend",
   "version": "1.0.0",
-  "description": "MediCompare – Full-stack hospital & lab price comparison platform",
-  "private": true,
+  "type": "module",
+  "main": "src/server.js",
   "scripts": {
-    "install:all": "npm install --prefix backend && npm install --prefix Frontend",
-    "dev:backend": "npm run dev --prefix backend",
-    "dev:frontend": "npm run dev --prefix Frontend",
-    "dev": "npm run dev:backend & npm run dev:frontend",
-    "seed": "npm run seed --prefix backend",
-    "build": "npm run build --prefix Frontend"
+    "start": "node src/server.js"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }

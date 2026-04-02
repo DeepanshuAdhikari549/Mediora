@@ -1,161 +1,203 @@
-# MediCompare 🏥
+<img src="./Frontend/src/assets/logo.png" alt="MediCompare Logo" width="100" height="100">
 
-**Find best hospitals & lab tests at lowest price near you.**
+# **MediCompare 🏥 – Healthcare Price Comparison Platform**
 
-MediCompare is a full-stack healthcare price comparison platform built with React + Node.js + MongoDB. Search hospitals, compare prices, book appointments, get AI-powered recommendations.
-
----
-
-## 🚀 Live Demo
-
-> Deploy in minutes — see [Deployment](#deployment) section below.
+**MediCompare** is a modern, full-stack healthcare web application built using the **MERN stack** (MongoDB, Express.js, React.js, Node.js). It allows users to search, compare, and book hospitals and lab tests at the **lowest price near them**, with AI-powered recommendations and a seamless user experience.
 
 ---
 
-## ✨ Features
+## 🌐 Live Demo
 
-- 🔍 **Search** hospitals, labs & clinics by service or location
-- 💰 **Compare prices** for blood tests, MRI, X-ray, CT scan & more
-- 📍 **Geolocation** — find nearest hospitals, fallback to Dehradun
-- 🤖 **AI Assistant** — Gemini-powered medical Q&A chatbot
-- 📅 **Book appointments** with slot selection & home sample collection
-- 💳 **Payments** — UPI/card simulation with invoice PDF download
-- 👤 **Role-based auth** — Patient | Hospital/Lab | Admin
-- ⭐ **Reviews & ratings** — verified user reviews
-- 📊 **Admin panel** — stats, hospital verification, analytics
-- 🌙 **Dark mode** + fully responsive mobile design
+🚀 Live - https://medi-compare-omega.vercel.app
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 18, Vite, TailwindCSS, Framer Motion |
-| State | Zustand + React Query |
-| Backend | Node.js, Express.js |
-| Database | MongoDB Atlas (Mongoose) |
-| Auth | JWT (7d expiry) |
-| AI | Google Gemini 1.5 Flash |
-| PDF | PDFKit (invoice generation) |
+**MongoDB Atlas** - Cloud database for storing hospitals, users, bookings
+
+**Express.js** - Backend REST API
+
+**React.js (Vite)** - Fast and modern frontend
+
+**Node.js** - Backend runtime
+
+**JWT** - Authentication & authorization
+
+**Google Gemini AI** - AI chatbot & recommendations
+
+**PDFKit** - Invoice generation
 
 ---
 
-## ⚡ Quick Start (Local)
+## 📦 Features
 
-### Prerequisites
-- Node.js ≥ 18
-- MongoDB Atlas account (free tier works)
+### 👤 User Features
 
-### 1. Clone
+* ✅ Search hospitals, labs & clinics
+* ✅ Compare prices for tests (MRI, CT Scan, Blood Tests, etc.)
+* ✅ Book appointments with slot selection
+* ✅ AI-powered chatbot for healthcare queries
+* ✅ View booking history & download invoices
+* ✅ Geolocation-based hospital suggestions
+
+---
+
+### 🏥 Admin / Hospital Features
+
+* ✅ Role-based login (Patient / Admin / Hospital)
+* ✅ Add, update, delete hospitals & services
+* ✅ Manage bookings & users
+* ✅ View analytics & system stats
+
+---
+
+## 🔐 Authentication & Security
+
+* Password hashing using bcrypt
+* JWT-based authentication (7-day expiry)
+* Role-based access control
+* Secure API handling
+
+---
+
+## 🧪 Testing
+
+* Manual testing for:
+
+  * Authentication
+  * Booking flow
+  * API endpoints
+* Error handling implemented for invalid inputs
+
+---
+
+## 🛠️ Installation
+
+Follow these steps to run MediCompare locally:
+
+---
+
+### **1. Clone Repository**
+
 ```bash
-git clone https://github.com/YOUR_USERNAME/medicompare.git
-cd medicompare
+git clone https://github.com/DeepanshuAdhikari549/MediCompare.git
+cd MediCompare
 ```
 
-### 2. Backend setup
+---
+
+### **2. Backend Setup**
+
 ```bash
 cd backend
 cp .env.example .env
-# Edit .env — fill in MONGODB_URI, JWT_SECRET, GEMINI_API_KEY
-npm install
-npm run dev        # starts on http://localhost:5000
 ```
 
-### 3. Seed sample data (optional)
+Add in `.env`:
+
+```env
+MONGO_URI=your_mongodb_connection
+JWT_SECRET=your_secret
+GEMINI_API_KEY=your_api_key
+FRONTEND_URL=http://localhost:5173
+```
+
 ```bash
-npm run seed       # adds 80+ hospitals to DB
-```
-
-### 4. Frontend setup
-```bash
-cd ../frontend
 npm install
-npm run dev        # starts on http://localhost:5173
+npm start
 ```
 
-Open **http://localhost:5173** 🎉
+➡ Backend runs on: http://localhost:5000
+
+---
+
+### **3. Frontend Setup**
+
+```bash
+cd ../Frontend
+npm install
+npm run dev
+```
+
+➡ Frontend runs on: http://localhost:5173
 
 ---
 
 ## 🌍 Deployment
 
-### Option A — Render (Full-stack, recommended)
+### 🔹 Frontend (Vercel)
 
-1. Push this repo to GitHub
-2. Go to [render.com](https://render.com) → **New** → **Blueprint**
-3. Connect your GitHub repo — Render auto-detects `render.yaml`
-4. Set environment variables in Render dashboard:
-   - `MONGODB_URI` — your Atlas connection string
-   - `JWT_SECRET` — any long random string
-   - `GEMINI_API_KEY` — from Google AI Studio
-   - `FRONTEND_URL` — your deployed frontend URL
-5. Click **Deploy** ✅
-
-### Option B — Vercel (Frontend) + Render (Backend)
-
-**Backend on Render:**
-- Root directory: `backend`
-- Build command: `npm install`
-- Start command: `npm start`
-- Add env vars as above
-
-**Frontend on Vercel:**
-- Root directory: `frontend`
-- Build command: `npm run build`
-- Output directory: `dist`
-- Add env var: `VITE_API_URL=https://your-backend.onrender.com`
+* Root Directory: `Frontend`
+* Build Command: `npm run build`
+* Output Directory: `dist`
 
 ---
 
-## 🔑 Environment Variables
+### 🔹 Backend (Render)
 
-### Backend (`backend/.env`)
-| Variable | Description |
-|----------|-------------|
-| `MONGODB_URI` | MongoDB Atlas connection string |
-| `JWT_SECRET` | Secret for signing JWT tokens |
-| `JWT_EXPIRES_IN` | Token expiry (default: `7d`) |
-| `GEMINI_API_KEY` | Google Gemini AI API key |
-| `FRONTEND_URL` | Frontend origin for CORS |
-| `PORT` | Server port (default: `5000`) |
+* Root Directory: `backend`
+* Build Command: `npm install`
+* Start Command: `npm start`
 
-### Frontend (`frontend/.env`)
-| Variable | Description |
-|----------|-------------|
-| `VITE_API_URL` | Backend URL (leave empty for local proxy) |
+---
+
+### 🔹 Environment Variables
+
+#### Backend
+
+* PORT=10000
+* MONGO_URI=your_mongodb_uri
+* JWT_SECRET=your_secret
+* GEMINI_API_KEY=your_api_key
+* FRONTEND_URL=https://medi-compare-omega.vercel.app
+
+---
+
+#### Frontend
+
+```env
+VITE_API_URL=https://your-backend.onrender.com
+```
 
 ---
 
 ## 📁 Project Structure
 
 ```
-medicompare/
+MediCompare/
 ├── backend/
-│   ├── src/
-│   │   ├── config/        # DB connection
-│   │   ├── controllers/   # Route handlers
-│   │   ├── middleware/    # Auth, validation
-│   │   ├── models/        # Mongoose models
-│   │   ├── routes/        # Express routers
-│   │   ├── services/      # Business logic
-│   │   ├── seed.js        # Sample data seeder
-│   │   └── server.js      # App entry point
-│   └── .env.example
-├── frontend/
-│   ├── src/
-│   │   ├── components/    # Reusable UI components
-│   │   ├── pages/         # Route pages
-│   │   ├── lib/           # API client, utilities
-│   │   ├── store/         # Zustand auth store
-│   │   └── App.jsx
-│   └── index.html
-├── render.yaml            # Render deployment config
+├── Frontend/
+├── render.yaml
 └── README.md
 ```
 
 ---
 
+## 📌 Future Improvements
+
+* 📱 Mobile app (React Native)
+* 💳 Real payment integration (Razorpay/Stripe)
+* 🧠 Advanced AI diagnosis suggestions
+* ⭐ Reviews & rating improvements
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to fork the repo and submit pull requests.
+
+---
+
+## 🙋‍♂️ Author
+
+**Deepanshu Adhikari**
+
+📧 [deepanshuadhikari@gmail.com](mailto:deepanshuadhikari@gmail.com)
+🔗 https://www.linkedin.com/in/deepanshu-adhikari-1b768028b
+
+---
+
 ## 📜 License
 
-MIT © MediCompare 2026
+MIT License © 2026 MediCompare
