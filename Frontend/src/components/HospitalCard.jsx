@@ -20,7 +20,7 @@ export default function HospitalCard({ hospital, className = '' }) {
                 {/* Image Section */}
                 <div className="w-full md:w-80 lg:w-96 h-64 md:h-auto relative overflow-hidden flex-shrink-0">
                     <img
-                        src={hospital.images?.[0] || "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800"}
+                        src={hospital.images?.[0] || `https://images.unsplash.com/photo-${["1519494026892-80bbd2d6fd0d", "1586773860418-d37222d8fce3", "1538108149393-fbbd81895907", "1516549655169-df83a0774514", "1551076805-a13ceeee03d3"][(hospital.name?.length || 0) % 5]}?auto=format&fit=crop&q=80&w=800`}
                         alt={hospital.name}
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                     />
