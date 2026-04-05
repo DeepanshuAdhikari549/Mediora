@@ -15,9 +15,9 @@ export default function StripePayment({ amount, onSuccess }) {
         // Create PaymentIntent as soon as the page loads
         const token = localStorage.getItem('token');
 
-        // Check if key is available
-        if (!import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY) {
-            console.error("Stripe Publishable Key is missing");
+        // Check if key is available or is a placeholder
+        if (!import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY === 'pk_test_placeholder') {
+            console.log("Running in demo mode without Stripe.");
             return;
         }
 
@@ -55,10 +55,19 @@ export default function StripePayment({ amount, onSuccess }) {
         appearance,
     };
 
-    if (!import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY) {
+    if (!import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY === 'pk_test_placeholder') {
         return (
-            <div className="p-6 bg-rose-50 dark:bg-rose-900/10 text-rose-600 dark:text-rose-400 rounded-2xl border border-rose-100 dark:border-rose-800 text-sm font-bold">
-                Payment Gateway Configuration Error: Stripe Public Key is missing.
+            <div className="flex flex-col space-y-4">
+                <div className="p-6 bg-amber-50 dark:bg-amber-900/10 text-amber-600 dark:text-amber-400 rounded-2xl border border-amber-100 dark:border-amber-800 text-sm font-bold">
+                    Payment Gateway is currently in Demo mode. No real payment required.
+                </div>
+                <button
+                    type="button"
+                    onClick={() => onSuccess('demo_payment_' + Date.now(), 'demo_mode')}
+                    className="w-full h-14 bg-teal-600 hover:bg-teal-700 text-white rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl shadow-teal-500/30 transition-all flex items-center justify-center gap-3 active:scale-95"
+                >
+                    Complete Booking
+                </button>
             </div>
         );
     }

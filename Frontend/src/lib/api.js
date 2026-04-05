@@ -4,7 +4,7 @@ import { getToken } from './utils';
 // In production, VITE_API_URL points to the deployed backend (e.g. https://medicompare-api.onrender.com)
 // In development, leave empty so Vite proxy forwards /api → localhost:5000
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '',
+  baseURL: import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://medicompare-1.onrender.com' : ''),
   headers: { 'Content-Type': 'application/json' },
 });
 
