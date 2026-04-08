@@ -1,8 +1,8 @@
 <img src="./Frontend/src/assets/logo.png" alt="MediCompare Logo" width="100" height="100">
 
-# **MediCompare 🏥 – Healthcare Price Comparison Platform**
+# **Mediora 🏥 – Healthcare Price Comparison Platform**
 
-**MediCompare** is a modern, full-stack healthcare web application built using the **MERN stack** (MongoDB, Express.js, React.js, Node.js). It allows users to search, compare, and book hospitals and lab tests at the **lowest price near them**, with AI-powered recommendations and a seamless user experience.
+**Mediora** is a modern, full-stack healthcare web application built using the **MERN stack** (MongoDB, Express.js, React.js, Node.js). It allows users to search, compare, and book hospitals and lab tests at the **lowest price near them**, with AI-powered recommendations and a seamless user experience.
 
 ---
 
